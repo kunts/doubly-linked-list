@@ -2,7 +2,6 @@ const Node = require('./node');
 
 class LinkedList {
     constructor() {
-
        this.length = 0;
 
     }
@@ -86,7 +85,14 @@ class LinkedList {
         }
     }
 
-    clear() {}
+    clear() {
+        this._head.next = null;
+        this._tail.prev = null;
+        this._head.data = null;
+        this._tail.data = null;
+
+        this.length =0;
+    }
 
     deleteAt(index) {
         if(index< this.length){
@@ -102,7 +108,7 @@ class LinkedList {
                 }
                 pointer.next.prev = pointer.prev;
                 pointer.prev.next = pointer.next;
-                
+
             }
         }else { return -1;
         }
@@ -111,8 +117,16 @@ class LinkedList {
     reverse() {}
 
     indexOf(data) {
-        for(var i=0; i<this.length; i++){}
+        var pointer = this._head;
 
+        for(var i=0; i < this.length; i++){
+            if (pointer.data == data){
+                return i;
+            }
+            pointer= pointer.next;
+
+        }
+        return -1;
     }
 }
 
