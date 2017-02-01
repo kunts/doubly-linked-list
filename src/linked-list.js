@@ -52,7 +52,7 @@ class LinkedList {
 
     insertAt(index, data) {
         var  cell = new Node(data);
-        if(index< this.length){
+        if(index < this.length){
             var pointer = this._head;
             if(index ==0){
                 this._head.prev = cell;
