@@ -88,7 +88,25 @@ class LinkedList {
 
     clear() {}
 
-    deleteAt(index) {}
+    deleteAt(index) {
+        if(index< this.length){
+            var pointer = this._head;
+            if(index ==0){
+                this._head.next.prev = null;
+                this._head = this._head.next;
+
+            }else{
+                for (var i=1; i<=index; i++){
+                    pointer = pointer.next;
+
+                }
+                pointer.next.prev = pointer.prev;
+                pointer.prev.next = pointer.next;
+                
+            }
+        }else { return -1;
+        }
+    }
 
     reverse() {}
 
