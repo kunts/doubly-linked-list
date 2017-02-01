@@ -36,9 +36,9 @@ class LinkedList {
     at(index) {
         if(index< this.length){
             var pointer = this._head;
-            if(index ==0){
+                if(index ==0){
                 return pointer.data;
-            }else{
+                }else{
                 for (var i=1; i<=index; i++){
                     pointer = pointer.next;
 
@@ -46,7 +46,8 @@ class LinkedList {
                 return pointer.data;
             }
         }else {
-            return -1;}
+         return -1;
+        }
     }
 
     insertAt(index, data) {
@@ -73,6 +74,7 @@ class LinkedList {
 
 
             }
+        this.length++;
         }else { return -1;
         }
     }
@@ -110,14 +112,27 @@ class LinkedList {
                 pointer.prev.next = pointer.next;
 
             }
+            this.length--;
         }else { return -1;
         }
     }
 
-    reverse() {}
+    reverse() {
+         var pointer = this._tail;
+        for(var i=0; i< this.length; i++){
+            var temp = Object.assign({}, pointer);
+            pointer.prev = temp.next;
+            pointer.next = temp.prev;
+            pointer = pointer.next;
+        }
+       temp = this._tail;
+        this._tail = this._head;
+        this._head = temp;
+
+    }
 
     indexOf(data) {
-        var pointer = this._head;
+       var pointer = this._head;
 
         for(var i=0; i < this.length; i++){
             if (pointer.data == data){
