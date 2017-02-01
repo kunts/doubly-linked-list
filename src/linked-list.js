@@ -34,9 +34,49 @@ class LinkedList {
         return this._tail.data;
     }
 
-    at(index) {}
+    at(index) {
+        if(index< this.length){
+            var pointer = this._head;
+            if(index ==0){
+                return pointer.data;
+            }else{
+                for (var i=1; i<=index; i++){
+                    pointer = pointer.next;
 
-    insertAt(index, data) {}
+                }
+                return pointer.data;
+            }
+        }else {
+            return -1;}
+    }
+
+    insertAt(index, data) {
+        var  cell = new Node(data);
+        if(index< this.length){
+            var pointer = this._head;
+            if(index ==0){
+                this._head.prev = cell;
+                cell.next = this._head;
+                this._head = cell;
+
+
+                return pointer.data;
+            }else{
+                for (var i=1; i<=index; i++){
+                    pointer = pointer.next;
+
+                }
+                cell.next = pointer;
+                cell.prev = pointer.prev;
+                pointer.prev = cell;
+                cell.prev.next= cell;
+
+
+
+            }
+        }else { return -1;
+        }
+    }
 
     isEmpty() {
         if(this.length==0){
