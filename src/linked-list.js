@@ -3,6 +3,8 @@ const Node = require('./node');
 class LinkedList {
     constructor() {
         this.length = 0;
+        this._head=null;
+        this._tail = null;
 
     }
 
@@ -21,7 +23,7 @@ class LinkedList {
 
         }
         this.length++;
-
+return this;
     }
 
     head() {
@@ -61,7 +63,7 @@ class LinkedList {
                     this._head = cell;
 
 
-                    return pointer.data;
+                  /*  return this;*/
                 }else{
                     for (var i=1; i<=index; i++){
                         pointer = pointer.next;
@@ -99,6 +101,7 @@ class LinkedList {
         this._tail.data = null;
 
         this.length =0;
+        return this;
     }
 
     deleteAt(index) {
@@ -129,6 +132,7 @@ class LinkedList {
 
             this.length =0;
         }
+        return this;
     }
 
     reverse() {
@@ -144,6 +148,7 @@ class LinkedList {
            this._tail = this._head;
            this._head = temp;
        }
+        return this;
     }
 
     indexOf(data) {
